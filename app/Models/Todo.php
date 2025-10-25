@@ -20,4 +20,3 @@ class Todo extends Model
         'is_completed' => 'boolean',
     ];
 }
-
