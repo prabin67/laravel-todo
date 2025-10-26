@@ -30,6 +30,13 @@
             </div>
         </form>
 
+         <!-- Search box -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Todo List</h2>
+            <input type="text" placeholder="Search todo..." x-model="search"
+                class="border-gray-300 rounded-md px-3 py-1 w-1/3 focus:ring focus:ring-indigo-200">
+        </div>
+
         <!-- Table -->
         <div class="overflow-x-auto">
             <table class="min-w-full divide-y divide-gray-200">
