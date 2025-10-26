@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Actions\Todo\UpdateTodoAction;
 use App\Actions\Todo\DeleteTodoAction;
+use App\Actions\Todo\ToggleTodoStatusAction;
 
 class TodoController extends Controller
 {
@@ -17,6 +18,17 @@ class TodoController extends Controller
         $todos = $listTodos->execute();
 
         return view('todos.index', compact('todos'));
+    }
+
+    public function toggleStatus($id, ToggleTodoStatusAction $action)
+    {
+        $todo = $action->execute($id);
+
+        $message = $todo->is_completed
+            ? 'Todo marked as completed.'
+            : 'Todo marked as incomplete.';
+
+        return redirect()->route('todos.index')->with('success', $message);
     }
 
     public function edit($id)

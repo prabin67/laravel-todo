@@ -28,6 +28,17 @@
     </td>
 
     <td class="px-6 py-4 text-right text-sm font-medium space-x-2">
+
+            <!-- Toggle Status -->
+        <form action="{{ route('todos.toggleStatus', $todo->id) }}" method="POST" class="inline">
+            @csrf
+            @method('PATCH')
+            <button type="submit"
+                    class="text-sm {{ $todo->is_completed ? 'text-yellow-600 hover:text-yellow-800' : 'text-green-600 hover:text-green-800' }}">
+                {{ $todo->is_completed ? 'Mark Incomplete' : 'Mark Complete' }}
+            </button>
+        </form>
+
         <!-- Edit button -->
         <a href="{{ route('todos.edit', $todo->id) }}"
            class="text-indigo-600 hover:text-indigo-900">
