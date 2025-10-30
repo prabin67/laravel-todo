@@ -9,4 +9,3 @@ Route::get('/todos/{id}/edit', [TodoController::class, 'edit'])->name('todos.edi
 Route::put('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');
 Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy');
 Route::patch('/todos/{id}/toggle-status', [TodoController::class, 'toggleStatus'])->name('todos.toggleStatus');
-
