@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Todo\CreateTodoAction;
+use App\Actions\Todo\DeleteTodoAction;
 use App\Actions\Todo\ListTodosAction;
+use App\Actions\Todo\ToggleTodoStatusAction;
+use App\Actions\Todo\UpdateTodoAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
-use App\Actions\Todo\UpdateTodoAction;
-use App\Actions\Todo\DeleteTodoAction;
-use App\Actions\Todo\ToggleTodoStatusAction;
 
 class TodoController extends Controller
 {
@@ -34,6 +33,7 @@ class TodoController extends Controller
     public function edit($id)
     {
         $todo = \App\Models\Todo::findOrFail($id);
+
         return view('todos.edit', compact('todo'));
     }
 
@@ -51,6 +51,7 @@ class TodoController extends Controller
     public function destroy(DeleteTodoAction $action, $id)
     {
         $action->execute($id);
+
         return redirect()->route('todos.index')->with('success', 'Todo deleted successfully.');
     }
 
